@@ -22,22 +22,41 @@ const SearchResults: FC<SearchResultsProps> = ({
     collectionType,
     query
 }) => {
-    const { data, isPending } = useSearchItems(parentId, collectionType, query?.trim());
+    const trimmedQuery = query?.trim();
+    const { data, isPending } = useSearchItems(parentId, collectionType, trimmedQuery);
 
     if (isPending) return <Loading />;
 
     if (!data?.length) {
+        const externalUrl =
+            'https://docs.nextcloud.com/server/latest/user_manual/fr/files/encrypting_files.html';
+
         return (
             <div className='noItemsMessage centerMessage'>
-                {`Bonjour ${globalize.translate('SearchResults', query)}`}
-                {collectionType && (
-                    <div>
+                {/* Ajoute "Bonjour" devant le message d'aucun résultat */}
+                {`Bonjour ${globalize.translate('SearchResultsEmpty', query)}`}
+
+                <div style={{ marginTop: 12, display: 'flex', gap: 10, justifyContent: 'center' }}>
+                    {/* Lien externe cliquable */}
+                    <a
+                        className='emby-button'
+                        href={externalUrl}
+                        target='_blank'
+                        rel='noopener noreferrer'
+                    >
+                        Aller ici
+                    </a>
+
+                    {/* Bouton Jellyfin existant (réessayer en recherche globale) */}
+                    {collectionType && (
                         <Link
                             className='emby-button'
-                            to={`/search?query=${encodeURIComponent(query || '')}`}
-                        >{globalize.translate('RetryWithGlobalSearch')}</Link>
-                    </div>
-                )}
+                            to={`/search?query=${encodeURIComponent(trimmedQuery || '')}`}
+                        >
+                            {globalize.translate('RetryWithGlobalSearch')}
+                        </Link>
+                    )}
+                </div>
             </div>
         );
     }
