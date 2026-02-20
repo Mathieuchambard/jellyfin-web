@@ -27,5 +27,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: |
-            ghcr.io/${{ github.repository_owner }}/jellyfin-custom:main
+          tags: ghcr.io/mathieuchambard/jellyfin-custom:master
