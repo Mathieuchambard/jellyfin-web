@@ -27,17 +27,36 @@ const SearchResults: FC<SearchResultsProps> = ({
     if (isPending) return <Loading />;
 
     if (!data?.length) {
+
+        const externalUrl = "https://docs.nextcloud.com/server/latest/user_manual/fr/files/encrypting_files.html";
+
         return (
             <div className='noItemsMessage centerMessage'>
                 {globalize.translate('SearchResultsEmpty', query)}
-                {collectionType && (
-                    <div>
+
+                <div style={{ marginTop: 12, display: 'flex', gap: 10, justifyContent: 'center' }}>
+
+                    {/* Bouton vers Nextcloud */}
+                    <a
+                        className='emby-button'
+                        href={externalUrl}
+                        target='_blank'
+                        rel='noopener noreferrer'
+                    >
+                        Aller ici
+                    </a>
+
+                    {/* Bouton Jellyfin existant */}
+                    {collectionType && (
                         <Link
                             className='emby-button'
                             to={`/search?query=${encodeURIComponent(query || '')}`}
-                        >{globalize.translate('RetryWithGlobalSearch')}</Link>
-                    </div>
-                )}
+                        >
+                            {globalize.translate('RetryWithGlobalSearch')}
+                        </Link>
+                    )}
+
+                </div>
             </div>
         );
     }
