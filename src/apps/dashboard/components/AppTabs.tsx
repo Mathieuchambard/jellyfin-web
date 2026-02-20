@@ -53,7 +53,7 @@ const AppTabs: FC<AppTabsParams> = ({
         };
     }, [ onTabsUpdate ]);
 
-    // HACK: Force resizing to workaround upstream bug with tab resizing
+    // HACK: Force resizing to workaround upstream bug with tab resizing !
     // https://github.com/mui/material-ui/issues/24011
     useEffect(() => {
         handleResize();
