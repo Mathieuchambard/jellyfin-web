@@ -34,6 +34,10 @@ const SearchResults: FC<SearchResultsProps> = ({
             <div className='noItemsMessage centerMessage'>
                 {globalize.translate('SearchResultsEmpty', query)}
 
+                <div style={{ fontSize: 18, padding: 12, border: "2px solid red" }}>
+                DEBUG: LIEN NEXTCLOUD ICI
+                    </div>
+
                 <div style={{ marginTop: 12, display: 'flex', gap: 10, justifyContent: 'center' }}>
 
                     {/* Bouton vers Nextcloud */}
