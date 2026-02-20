@@ -29,7 +29,7 @@ const SearchResults: FC<SearchResultsProps> = ({
     if (!data?.length) {
         return (
             <div className='noItemsMessage centerMessage'>
-                {`Bonjour ${globalize.translate('SearchResultsEmpty', query)}`}
+                {`Bonjour ${globalize.translate('SearchResults', query)}`}
                 {collectionType && (
                     <div>
                         <Link
