@@ -2,7 +2,7 @@ name: Build & Push Jellyfin (custom web)
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 permissions:
   contents: read
