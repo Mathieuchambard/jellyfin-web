@@ -65,7 +65,7 @@ const SearchResults: FC<SearchResultsProps> = ({
                 </div>
             </div>
         );
-    }
+    } 
 
     const renderSection = (section: Section, index: number) => {
         return (
