@@ -24,6 +24,12 @@ const SearchResults: FC<SearchResultsProps> = ({
 }) => {
     const trimmedQuery = query?.trim();
     const { data, isPending } = useSearchItems(parentId, collectionType, trimmedQuery);
+    console.log("DEBUG SEARCH:", {
+        query,
+        data,
+        dataLength: data?.length,
+        isPending
+        });
 
     if (isPending) return <Loading />;
 
